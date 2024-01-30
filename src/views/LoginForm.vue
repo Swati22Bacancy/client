@@ -38,6 +38,8 @@
         // Make the API request to Laravel using axios
         this.$http.post('/login', credentials)
           .then(response => {
+            localStorage.setItem('token', response.data.token);
+            this.$router.push('/profile');
             this.message = response.data.message;
           })
           .catch(error => {
